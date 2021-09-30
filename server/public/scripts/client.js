@@ -1,5 +1,5 @@
 const form = $("form")
-
+const domHistory = $("#history")
 
 form.submit((event) => {
     event.preventDefault();
@@ -18,12 +18,40 @@ form.submit((event) => {
         url: "http://localhost:5001/calculate",
         success: function (data) {
             $.get("http://localhost:5001/answer", (data) => {
-                alert(data.answer)
+               
+                $("#answer").text(data.answer)
+                const markUp = `
+                <li> ${formData.firstNum} ${formData.symbol}   ${formData.lastNum} = ${data.answer}
+                `
+                domHistory.append(markUp)
             })
+           
         },
         error: function (err) {
             console.log(err);
         }
     })
-
+ 
 })
+
+$("#clear").click(() => {
+    $("#firstNum").val("")
+    $("#lastNum").val("")
+})
+
+function loadHistory () {
+
+    $.get("http://localhost:5001/history", (data) => {        
+       data.forEach(answer => {
+           const markUp = `
+           <li> ${answer.firstNum} ${answer.symbol}   ${answer.lastNum} = ${answer.answer}
+           `
+           domHistory.append(markUp)
+       })
+    })
+}
+
+
+loadHistory()
+
+
