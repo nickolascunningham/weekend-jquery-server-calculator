@@ -1,8 +1,12 @@
 // requires
 let express = require('express');
+let cors = require('cors')
 let app = express();
 
 app.use(express.json())
+
+// to allow cors for msking requests
+app.use(cors())
 
 // uses
 app.use(express.static('server/public'));
@@ -25,6 +29,7 @@ app.get('/history', (req, res) => {
 //symbols and calculations
 app.post('/calculate', (req, res) => {
     let { symbol, lastNum, firstNum } = req.body
+    console.log(req.body)
     if (symbol === "-") {
         answer = firstNum - lastNum
     } else if (symbol === "+") {

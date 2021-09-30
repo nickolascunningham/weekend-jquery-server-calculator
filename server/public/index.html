@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weekend Challenge 2</title>
     <script src="vendors/jquery-3.6.0.min.js"></script>
-    <script src="scripts/client.js"></script>
+    <script defer src="scripts/client.js"></script>
     <link rel="stylesheet" href="styles/styles.css">
 
 </head>
@@ -14,18 +14,22 @@
     <h1>Server Side Calculator</h1>
 
     <form>
-          <input type="number" name="firstNum" >
+          <input placeholder="enter number" type="number" id="firstNum" name="firstNum" >
           <div>
-              <button>+</button>
-              <button>-</button>
-              <button>*</button>
-              <button>/</button>
+              <input name="btn" type="radio" value="+" class="symbol">
+              <label>+</label>
+              <input name="btn" type="radio" value="-" class="symbol">
+               <label for="">-</label>
+              <input name='btn' type="radio" value="*" class="symbol">
+              <label for="">*</label>
+              <input name="btn" type="radio" value="/" class="symbol">
+              <label for="">/</label>
           </div>
-          <input type="number" name="lastNum" >
-          
+          <input id="lastNum" placeholder="enter number" type="number" name="lastNum" >
+
           <div>
-            <button>=</button>
-            <button>C</button>
+           <input type="submit" value="=">
+           <button>c</button>
           </div>
          
     </form>
