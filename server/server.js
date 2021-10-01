@@ -5,7 +5,7 @@ let app = express();
 
 app.use(express.json())
 
-// to allow cors for msking requests
+// to allow cors for making requests
 app.use(cors())
 
 // uses

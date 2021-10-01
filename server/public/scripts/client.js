@@ -41,17 +41,27 @@ $("#clear").click(() => {
 
 function loadHistory () {
 
-    $.get("http://localhost:5001/history", (data) => {        
-       data.forEach(answer => {
-           const markUp = `
-           <li> ${answer.firstNum} ${answer.symbol}   ${answer.lastNum} = ${answer.answer}
-           `
-           domHistory.append(markUp)
-       })
+   
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:5001/history",
+    })
+    .then(data => {
+        data.forEach(answer => {
+            const markUp = `
+            <li> ${answer.firstNum} ${answer.symbol}   ${answer.lastNum} = ${answer.answer}
+            `
+            domHistory.append(markUp)
+        })
+    })
+    .catch(error => {
+        console.log(error)
     })
 }
 
 
 loadHistory()
+
+
 
 
